@@ -1,0 +1,12 @@
+<div class="alert alert-primary" role="alert">
+  <strong>{{title}}</strong>
+  <h5>Current Sum is: {{total}}</h5>
+  <h5>Previous Sum is: {{previousValue}}</h5>
+  <h5>Searching Ng-content:</h5>
+  <ng-content></ng-content>
+  <hr>
+  <ng-content select=".myClass"></ng-content>
+  <hr>
+  <ng-content select="[myAttribute]"></ng-content>
+  <p>{{a.nativeElement.textContent}}</p>
+</div>

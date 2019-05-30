@@ -1,0 +1,27 @@
+<div class="card">
+  <div class="card-header">
+    ngClass example
+  </div>
+  <div class="card-body">
+    <h1 [ngClass]="setClass()">
+      This is ngClass example.
+    </h1>
+    <button class="btn btn-primary"
+            type="button"
+            (click)="toggleClass()">Set ngClass</button>
+  </div>
+</div>
+<br>
+<div class="card">
+    <div class="card-header">
+      ngStyle example
+    </div>
+    <div class="card-body">
+      <h1 [ngStyle]="setStyle()">
+        This is ngStyle example.
+      </h1>
+      <button class="btn btn-primary"
+              type="button"
+              (click)="toggleStyle()">Set ngStyle</button>
+    </div>
+  </div>

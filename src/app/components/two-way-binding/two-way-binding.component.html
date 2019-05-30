@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+      Two-way binding example :
+    </div>
+    <div class="card-body">
+      <form>
+        <div class="form-group">
+          <label>Full Name:{{ name }}</label>
+          <input  type="text"
+                    class="form-control"
+                    [(ngModel)]="name"
+                    [ngModelOptions]="{standalone: true}"
+          >
+        </div>
+        <div class="form-group">
+          <label for="gender">Gender : {{gender}}</label>
+          <select class="custom-select"
+                  name="gender"
+                  id="gender"
+                  [(ngModel)]="gender"
+                  [ngModelOptions]="{standalone: true}"
+          >
+            <option selected disabled>Select one</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+      </form>
+    </div>
+  </div>

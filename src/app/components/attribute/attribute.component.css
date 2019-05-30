@@ -1,0 +1,10 @@
+.isBorder {
+  border : 1px solid black;
+  border-radius: .25rem;
+}
+.color-red {
+  color : red;
+}
+.font-style {
+  font-size: 20px;
+}

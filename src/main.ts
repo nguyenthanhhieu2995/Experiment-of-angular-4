@@ -8,5 +8,5 @@ if (environment.production) {
   enableProdMode();
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule)// hàm bootstrapModule start root-Module(tất cả module bản chất là class)
   .catch(err => console.error(err));

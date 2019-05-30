@@ -1,0 +1,111 @@
+<div class="card">
+  <div class="card-header">
+   ng-if example
+  </div>
+  <div class="card-body">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input  type="radio"
+                class="form-check-input"
+                name="gender"
+                value="1"
+                [(ngModel)]="genderValue"
+        >
+        Male
+      </label>
+      <br>
+      <label class="form-check-label">
+        <input  type="radio"
+                class="form-check-input"
+                name="gender"
+                value="0"
+                [(ngModel)]="genderValue"
+        >
+        Female
+      </label>
+    </div>
+    <ng-container *ngIf="genderValue == 1;else femaleBlock">
+      <h5>Gender: Male </h5>
+    </ng-container>
+    <ng-template #femaleBlock>
+      <h5>Gender : {{!genderValue ? "" : "Female"}}</h5>
+    </ng-template>
+    <h5>ng-form</h5>
+    <form #f="ngForm"
+          (ngSubmit)="onSubmit()"
+          novalidate>
+      <input  class="form-control"
+              type="text"
+              name="username"
+              [(ngModel)]="name"
+              required
+      >
+      <br>
+      <button type="submit"
+              class="btn btn-primary"
+              [disabled]="!f.valid"
+      >
+              Submit
+      </button>
+    </form>
+  </div>
+
+</div>
+<br>
+
+<div class="card">
+  <div class="card-header">
+    ngFor example:
+  </div>
+  <div class="card-body">
+    <ng-container *ngIf="listItems.length>0;else emptyTemplate">
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Name</th>
+            <th>Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of listItems;
+                      let i=index; let e=even;
+                      trackBy :myTrackByFunction"
+              [style.background-color]=" e ? 'gray': ''">
+            <td scope="row" >{{i + 1}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.price}} VND</td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #emptyTemplate>
+      <h5>No item.</h5>
+    </ng-template>
+    <button class="btn btn-info" type="button" (click)="getdata()">Get data</button>
+  </div>
+</div>
+<br>
+
+<div class="card">
+  <div class="card-header">
+    ngSwitchCase example:
+  </div>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item"
+          *ngFor="let user of users"
+          [ngSwitch]="user.country">
+        <span *ngSwitchCase="'USA'" class="text-danger">
+            {{user.name}} - {{user.country}}
+        </span>
+        <span *ngSwitchCase="'ENG'" class="text-primary">
+            {{user.name}} - {{user.country}}
+        </span>
+        <span *ngSwitchDefault class="text-dark">
+            {{user.name}} - {{user.country}}
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,80 @@
+<table class="table table-bordered table-hover table-responsive">
+  <thead>
+    <tr>
+      <th>Pipe method </th>
+      <th>Input data</th>
+      <th>Output data</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uppercase</td>
+      <td>{{text}}</td>
+      <td>{{text | uppercase}}</td>
+    </tr>
+    <tr>
+      <td>slice:0:10</td>
+      <td>{{text}}</td>
+      <td>{{text | slice:0:10}}</td>
+    </tr>
+    <tr>
+      <td>number:'min.min-max'</td>
+      <td>{{num}}</td>
+      <td>{{num | number}}</td>
+    </tr>
+    <tr>
+      <td>percent:'min.min-max'</td>
+      <td>{{num}}</td>
+      <td>{{num | percent:'1.0-3'}}</td>
+    </tr>
+    <tr>
+      <td>date:'dd/MM/y'</td>
+      <td>{{date}}</td>
+      <td>{{date | date:'dd/MM/y'}}</td>
+    </tr>
+    <tr>
+      <td>JSON</td>
+      <td>{{users}}</td>
+      <td>{{users | json}}</td>
+    </tr>
+  </tbody>
+</table>
+<h5>Custom pipe filter</h5>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <td colspan="5">
+        <div class="input-group">
+          <input class="form-control col-9" type="text" placeholder='Filter by {{filterField}}'
+            [(ngModel)]="filterValue">
+          <select class="form-control col-3" name="Filter" (change)="selectFilterField($event)">
+            <option value="" disabled selected>--Filter--</option>
+            <option value="id">ID</option>
+            <option value="first_name">First name</option>
+            <option value="last_name">Last name</option>
+            <option value="email">Email</option>
+            <option value="gender">Gender</option>
+          </select>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <th (click)="onHandleSortBy('id')">ID</th>
+      <th (click)="onHandleSortBy('first_name')">First name</th>
+      <th (click)="onHandleSortBy('last_name')">Last name</th>
+      <th (click)="onHandleSortBy('email')">Email</th>
+      <th (click)="onHandleSortBy('gender')">Gender</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users |
+                  filter: filterField: filterValue |
+                  sort: sortBy: sortValue">
+      <td>{{user.id}}</td>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email | formatData : 15}}</td>
+      <td>{{user.gender}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,36 @@
+<div class="card">
+  <div class="card-body">
+    <label for="Name :">Name:</label>
+    <input type="text" class="form-control" [(ngModel)]="name">
+    <label for="Price :">Price:</label>
+    <input type="number" class="form-control" [(ngModel)]="price">
+    <button class="btn btn-primary"
+            type="button"
+            [routerLink]="['/products']"
+            [queryParams]="{name : name ? name : '' ,price : price ? price : ''}"
+    >Search</button>
+    <hr>
+    <h5 class="card-title">Products</h5>
+
+
+    <table class="table table-light table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products;
+                    let i=index" [routerLink]="['/product',product.id]" >
+          <td>{{ product.id }}</td>
+          <td>{{ product.name }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.status ? 'Active' : 'Deactive' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
